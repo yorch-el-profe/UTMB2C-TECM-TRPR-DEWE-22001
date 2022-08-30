@@ -18,14 +18,14 @@ const UserSchema = new Schema({
 const UserModel = model('users', UserSchema);
 
 // SELECT * FROM users;
-/*UserModel.find(function (err, result) {
+UserModel.find(function (err, result) {
   if (err) {
     console.error('No se puede realizar consulta en base de datos');
     console.error(err);
   } else {
     console.log(result);
   }
-});*/
+});
 
 // SELECT * FROM table WHERE field1 = 'a' AND field2 = 'b' -> { field1: 'a', field2: 'b' }
 // SELECT * FROM table WHERE field1 = 1 OR field2 = 2 -> { $or: [{ field1: 1 }, { field2: 2 }] }
@@ -36,5 +36,15 @@ UserModel.findOne({ username: 'paquito_48' }, function (err, result) {
     console.error(err);
   } else {
     console.log(result);
+  }
+});
+
+// SELECT * FROM users WHERE id = '630d7784ae0a0fb114164d8d';
+UserModel.findById('630d7784ae0a0fb114164d8d', function (err, document) {
+  if (err) {
+    console.error('No se puede realizar consulta en base de datos');
+    console.error(err);
+  } else {
+    console.log(document);
   }
 });

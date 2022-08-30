@@ -25,8 +25,8 @@ mongoose
   );
 */
 const UserSchema = new mongoose.Schema({
-  email: { type: String, maxlength: 50 },
-  username: { type: String, maxlength: 50 },
+  email: { type: String, maxlength: 50, unique: true },
+  username: { type: String, maxlength: 50, unique: true },
   password: { type: String, maxlength: 15, minlength: 8 }
 });
 
@@ -48,8 +48,8 @@ const UserModel = mongoose.model('users', UserSchema);
 const PostModel = mongoose.model('posts', PostSchema);
 
 new UserModel({
-  email: 'paquito@gmail.com',
-  username: 'paquito_48',
+  email: 'jose@gmail.com',
+  username: 'jose_123',
   password: '123123123'
 }).save(function (err, document) {
   if (err) {
@@ -59,4 +59,4 @@ new UserModel({
     console.log('Documento insertado en la base de datos');
     console.log(document);
   }
-})
+});
